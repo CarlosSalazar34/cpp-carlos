@@ -16,7 +16,7 @@ Este repositorio contiene una colección de ejercicios prácticos en C++ diseña
   - Manejo de errores básicos (división por cero)
   - Funciones del sistema para limpiar la pantalla
 
-- **`main.cpp`**: Un sistema de gestión de inventario que demuestra el uso de estructuras de datos avanzadas. Incluye funcionalidades para:
+- **`inventario.cpp`**: Un sistema de gestión de inventario que demuestra el uso de estructuras de datos avanzadas. Incluye funcionalidades para:
   - Agregar productos al inventario
   - Eliminar productos
   - Mostrar el inventario completo
