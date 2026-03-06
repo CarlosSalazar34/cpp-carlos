@@ -54,7 +54,7 @@ g++ calculadora.cpp -o calculadora
 ./calculadora
 
 # Para el sistema de inventario
-g++ main.cpp -o inventario
+g++ inventario.cpp -o inventario
 ./inventario
 ```
 
@@ -66,7 +66,7 @@ cl calculadora.cpp /Fe:calculadora.exe
 calculadora.exe
 
 # Para el sistema de inventario
-cl main.cpp /Fe:inventario.exe
+cl inventario.cpp /Fe:inventario.exe
 inventario.exe
 ```
 
