@@ -3,6 +3,7 @@
 #include <map>
 #include <any>  
 #include <cstdlib> 
+#include <algorithm>
 using namespace std;
 
 void clearScreen(){
@@ -19,6 +20,26 @@ void addProduct(vector<map<string, any>>& inventory, string name, double price, 
         {"price", price},
         {"quantity", quantity}
     });
+}
+
+void deleteProduct(vector<map<string, any>>& inventory){
+    string name;
+    for(const auto& product: inventory){
+        cout <<"Nombre" << any_cast<string>(product.at("name"))
+         << "Precio: " << any_cast<double>(product.at("price")) 
+         << "Cantidad: " << any_cast<int>(product.at("quantity")) << endl;
+    }
+    cout << "Ingrese el nombre del producto a eliminar: ";
+    cin >> name;
+    auto it = find_if(inventory.begin(), inventory.end(), [&name](const map<string, any>& product){
+        return any_cast<string>(product.at("name")) == name;
+    });
+    if (it != inventory.end()){
+        inventory.erase(it);
+        cout << "Producto eliminado" << endl;
+    } else {
+        cout << "Producto no encontrado" << endl;
+    }
 }
 
 void menu()
@@ -44,6 +65,7 @@ int main(){
         cout << "Ingrese una opción: ";
         cin >> option;
         if (option == 1){
+            clearScreen();
             string name;
             double price;
             int quantity;
