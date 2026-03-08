@@ -15,14 +15,38 @@ int main() {
     transform(texto.begin(), texto.end(), texto.begin(), ::tolower);
     cout << texto << endl;
 
-    vector<int> numeros = {1, 2, 3, 4, 5};
-    numeros.push_back(6);
-    cout << "Tamaño del vector: " << numeros.size() << endl;
-    cout << "Elementos del vector: ";
-    for (const auto& n : numeros) {
-        cout << n << " ";
+    vector<map<string, string>> usuarios = {
+        {{"nombre", "Carlos"}, {"edad", "30"}},
+        {{"nombre", "Ana"}, {"edad", "25"}},
+        {{"nombre", "Luis"}, {"edad", "28"}}
+    };
+    for (const auto& usuario: usuarios){
+        cout << "Nombre: " << usuario.at("nombre") << ", Edad: " << usuario.at("edad") << endl;
     }
-    cout << endl;
+
+    vector<int> numeros = {1, 2, 3, 4, 5};
+
+    cout << numeros.size() << endl;
+    cout << numeros[0] << endl;
+
+    for(int n = 0; n < numeros.size(); n++){
+        cout << numeros[n] << endl;
+    };
+
+
+
+    // numeros.push_back(6);
+
+    // for (const auto& n: numeros){
+    //     cout << n << endl;
+    // }
+
+    // cout << "Tamaño del vector: " << numeros.size() << endl;
+    // cout << "Elementos del vector: ";
+    // for (const auto& n : numeros) {
+    //     cout << n << " ";
+    // }
+    // cout << endl;
 
     return 0;
 
