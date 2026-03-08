@@ -13,8 +13,12 @@ void clearScreen(){
     #endif
 }
 
-void addProduct(){
-    
+void addProduct(vector<map<string, any>>& inventory, string name, double price, int quantity){
+    inventory.push_back({
+        {"name", name},
+        {"price", price},
+        {"quantity", quantity}
+    });
 }
 
 void menu()
@@ -40,7 +44,16 @@ int main(){
         cout << "Ingrese una opción: ";
         cin >> option;
         if (option == 1){
-
+            string name;
+            double price;
+            int quantity;
+            cout << "Ingrese el nombre del producto: ";
+            cin >> name;
+            cout << "Ingrese el precio del producto: ";
+            cin >> price;
+            cout << "Ingrese la cantidad del producto: ";
+            cin >> quantity;
+            addProduct(usuarios, name, price, quantity);
         }
 
     }
