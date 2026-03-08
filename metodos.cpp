@@ -20,10 +20,11 @@ int main() {
         {{"nombre", "Ana"}, {"edad", "25"}},
         {{"nombre", "Luis"}, {"edad", "28"}}
     };
-    for (const auto& usuario: usuarios){
-        cout << "Nombre: " << usuario.at("nombre") << ", Edad: " << usuario.at("edad") << endl;
+    for (const auto& usuario : usuarios) {
+        cout << usuario.at("nombre") << '\n';   // ahora sí extrae el valor asociado
     }
-
+        
+    // cout << "Nombre: " << usuario.at("nombre") << ", Edad: " << usuario.at("edad") << endl;
     vector<int> numeros = {1, 2, 3, 4, 5};
 
     cout << numeros.size() << endl;
