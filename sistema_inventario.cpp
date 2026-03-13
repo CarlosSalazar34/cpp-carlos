@@ -1,45 +1,62 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include <any>  
-#include <cstdlib> 
+#include <any>
+#include <cstdlib>
 #include <algorithm>
+#include <limits>
 using namespace std;
 
-void clearScreen(){
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 
-void addProduct(vector<map<string, any>>& inventory, string name, double price, int quantity){
-    inventory.push_back({
-        {"name", name},
-        {"price", price},
-        {"quantity", quantity}
-    });
+void addProduct(vector<map<string, any>> &inventory, string name, double price, int quantity)
+{
+    inventory.push_back({{"name", name},
+                         {"price", price},
+                         {"quantity", quantity}});
 }
 
-void deleteProduct(vector<map<string, any>>& inventory){
+void deleteProduct(vector<map<string, any>> &inventory)
+{
     string name;
-    for(const auto& product: inventory){
-        cout <<"Nombre" << any_cast<string>(product.at("name"))
-         << "Precio: " << any_cast<double>(product.at("price")) 
-         << "Cantidad: " << any_cast<int>(product.at("quantity")) << endl;
+    for (const auto &product : inventory)
+    {
+        cout << "Nombre" << any_cast<string>(product.at("name"))
+             << "Precio: " << any_cast<double>(product.at("price"))
+             << "Cantidad: " << any_cast<int>(product.at("quantity")) << endl;
     }
     cout << "Ingrese el nombre del producto a eliminar: ";
     cin >> name;
-    auto it = find_if(inventory.begin(), inventory.end(), [&name](const map<string, any>& product){
-        return any_cast<string>(product.at("name")) == name;
-    });
-    if (it != inventory.end()){
+    auto it = find_if(inventory.begin(), inventory.end(), [&name](const map<string, any> &product)
+                      { return any_cast<string>(product.at("name")) == name; });
+    if (it != inventory.end())
+    {
         inventory.erase(it);
         cout << "Producto eliminado" << endl;
-    } else {
+    }
+    else
+    {
         cout << "Producto no encontrado" << endl;
     }
+}
+
+void showProducts(vector<map<string, any>>& inventory){
+    for (int i=0; i<inventory.size(); i++){
+        cout << "Nombre: " << any_cast<string>(inventory[i].at("name"))
+             << "Precio: " << any_cast<double>(inventory[i].at("price"))
+             << "Cantidad: " << any_cast<int>(inventory[i].at("quantity")) << endl;
+    }
+    // Limpieza segura del búfer
+    cin.clear(); 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
 }
 
 void menu()
@@ -56,15 +73,19 @@ void menu()
     cout << "Seleccione una opción: ";
 }
 
-int main(){
-    vector<map<string, any>> usuarios = {};
+int main()
+{
+    vector<map<string, any>> inventory = {};
     int option;
     while (true)
     {
         menu();
         cout << "Ingrese una opción: ";
         cin >> option;
-        if (option == 1){
+        switch (option)
+        {
+        case 1:
+        {
             clearScreen();
             string name;
             double price;
@@ -75,9 +96,37 @@ int main(){
             cin >> price;
             cout << "Ingrese la cantidad del producto: ";
             cin >> quantity;
-            addProduct(usuarios, name, price, quantity);
+            addProduct(inventory, name, price, quantity);
+            /* code */
+            break;
+        }
+        
+        case 2:
+        {
+            clearScreen();
+            deleteProduct(inventory);
         }
 
+        case 3: 
+        {
+            clearScreen();
+            showProducts(inventory);
+
+        }
+
+        case 4:
+        {
+
+        }
+
+        case 0: 
+        {
+            cout << "Saliendo del programa..." << endl;
+            return 0;
+        }
+
+        default:
+            break;
+        }
     }
-    
 }
