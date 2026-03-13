@@ -16,6 +16,25 @@ void clearScreen()
 #endif
 }
 
+void updateProduct(vector<map<string, any>> &inventory){
+    string name;
+    double newPrice;
+    double newQuantity;
+    cout << "Ingrese el nombre del producto a actualizar: ";
+    cin >> name;
+    for (auto &product: inventory){
+        if (any_cast<string>(product.at("name")) == name){
+            cout << "Ingrese el nuevo precio: ";
+            cin >> newPrice;
+            cout << "Ingrese la nueva cantidad: ";
+            cin >> newQuantity;
+            product.at("price") = newPrice;
+            product.at("quantity") = newQuantity;
+            cout << "Producto actualizado" << endl;
+        }
+    } 
+}
+
 void addProduct(vector<map<string, any>> &inventory, string name, double price, int quantity)
 {
     inventory.push_back({{"name", name},
@@ -129,7 +148,10 @@ int main()
 
         case 4:
         {
-
+            clearScreen();
+            updateProduct(inventory);
+            clearScreen();
+            break;
         }
 
         case 0: 
