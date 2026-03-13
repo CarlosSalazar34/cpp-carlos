@@ -47,14 +47,23 @@ void deleteProduct(vector<map<string, any>> &inventory)
     }
 }
 
-void showProducts(vector<map<string, any>>& inventory){
-    for (int i=0; i<inventory.size(); i++){
-        cout << "Nombre: " << any_cast<string>(inventory[i].at("name"))
-             << "Precio: " << any_cast<double>(inventory[i].at("price"))
-             << "Cantidad: " << any_cast<int>(inventory[i].at("quantity")) << endl;
+void showProducts(const vector<map<string, any>>& inventory)
+{
+    if (inventory.empty())
+    {
+        cout << "No hay productos en el inventario." << endl;
     }
-    // Limpieza segura del búfer
-    cin.clear(); 
+    else
+    {
+        for (const auto &product : inventory)
+        {
+            cout << "Nombre: " << any_cast<string>(product.at("name"))
+                 << " | Precio: " << any_cast<double>(product.at("price"))
+                 << " | Cantidad: " << any_cast<int>(product.at("quantity")) << endl;
+        }
+    }
+
+    cout << "Presione Enter para continuar...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
