@@ -114,12 +114,16 @@ int main()
         {
             clearScreen();
             deleteProduct(inventory);
+            clearScreen();
+            break;
         }
 
         case 3: 
         {
             clearScreen();
             showProducts(inventory);
+            clearScreen();
+            break;
 
         }
 
