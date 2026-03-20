@@ -9,9 +9,13 @@ void crearCuenta(vector<map<string, string>>& cuentas){
     string nombreCompleto, numeroCuenta, saldo;
     map<string, string> cuenta;
     cout << "Ingrese el nombre completo del titular de la cuenta: ";
+    cin.ignore(); // Limpiar el buffer de entrada
     cin >> nombreCompleto;
+    cin.ignore(); // Limpiar el buffer de entrada
     cout << "Ingrese el numero de cuenta: ";
+    cin.ignore(); // Limpiar el buffer de entrada
     cin >> numeroCuenta;
+    cin.ignore(); // Limpiar el buffer de entrada
     cout << "Ingrese el saldo inicial: ";
     cin >> saldo;
     cuenta["nombre"] = nombreCompleto;
