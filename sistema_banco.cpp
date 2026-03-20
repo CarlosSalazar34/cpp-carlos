@@ -1,55 +1,82 @@
 #include <iostream>
 #include <string>
-#include <vector> 
+#include <vector>
 #include <map>
 #include <algorithm>
+
 using namespace std;
 
-void crearCuenta(vector<map<string, string>>& cuentas){ 
+void crearCuenta(vector<map<string, string>> &cuentas)
+{
     string nombreCompleto, numeroCuenta, saldo;
     map<string, string> cuenta;
-    cout << "Ingrese el nombre completo del titular de la cuenta: ";
-    cin.ignore(); // Limpiar el buffer de entrada
-    cin >> nombreCompleto;
-    cin.ignore(); // Limpiar el buffer de entrada
+
+    cout << "Ingrese el nombre completo: ";
+    cin.ignore();                 // Limpia el salto de línea del menú
+    getline(cin, nombreCompleto); // Permite espacios en el nombre
+
     cout << "Ingrese el numero de cuenta: ";
-    cin.ignore(); // Limpiar el buffer de entrada
     cin >> numeroCuenta;
-    cin.ignore(); // Limpiar el buffer de entrada
+
     cout << "Ingrese el saldo inicial: ";
     cin >> saldo;
+
     cuenta["nombre"] = nombreCompleto;
     cuenta["numero"] = numeroCuenta;
     cuenta["saldo"] = saldo;
     cuentas.push_back(cuenta);
+    cout << "Cuenta creada con exito.\n";
 }
 
-int main(){ 
+void consultarSaldo(const vector<map<string, string>> &cuentas)
+{
+    string numeroCuenta;
+    cout << "Ingrese el numero de cuenta a consultar: ";
+    cin >> numeroCuenta;
+
+    auto it = find_if(cuentas.begin(), cuentas.end(), [numeroCuenta](const map<string, string> &cuenta)
+                      { return cuenta.at("numero") == numeroCuenta; });
+
+    if (it != cuentas.end())
+    {
+        cout << "Titular: " << it->at("nombre") << endl;
+        cout << "Saldo actual: $" << it->at("saldo") << endl;
+    }
+    else
+    {
+        cout << "Error: Cuenta no encontrada." << endl;
+    }
+}
+
+int main()
+{
     int opcion;
     vector<map<string, string>> cuentas;
 
-    cout << "BIENVENIDO AL SISTEMA DE BANCO" << endl << 
-        "n1. Crear cuenta" << endl <<
-        "n2. Consultar saldo" << endl <<
-        "n3. Retirar dinero" << endl <<
-        "n4. Depositar dinero"<< endl <<
-        "n0. Salir" << endl <<
-        "Ingrese una opcion: ";
-    cin >> opcion;
-
-    switch (opcion)
+    do
     {
-    case 1:
-        crearCuenta(cuentas);
-        break;
+        cout << "\n--- SISTEMA BANCARIO ---" << endl;
+        cout << "1. Crear cuenta" << endl;
+        cout << "2. Consultar saldo" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
 
-    case 0:
-        cout << "Gracias por usar el sistema de banco" << endl;
-        return 0;
-    
-    default:
-        break;
-    }
+        switch (opcion)
+        {
+        case 1:
+            crearCuenta(cuentas);
+            break;
+        case 2:
+            consultarSaldo(cuentas);
+            break;
+        case 0:
+            cout << "Saliendo..." << endl;
+            break;
+        default:
+            cout << "Opcion invalida." << endl;
+        }
+    } while (opcion != 0);
 
     return 0;
 }
