@@ -15,6 +15,12 @@ int main(){
     Q->dato = 20;
     Q->siguiente = nullptr;
     P->siguiente = Q;
+    Lista *aux = P;
+    while (aux != nullptr)
+    {
+        cout << aux->dato << endl;
+        aux = aux->siguiente;
+    }
     
     return 0;
 }
