@@ -196,26 +196,3 @@ int main()
     return 0;
 }
 
-// int main(){
-//     Nodo* nuevoNodo = crearNodo(15);
-//     Nodo* otroNodo = crearNodo(20);
-//     Nodo* tercerNodo = crearNodo(25);
-//     nuevoNodo->siguiente = otroNodo;
-//     otroNodo->siguiente = tercerNodo;
-//     cout << "Lista enlazada:" << endl;
-//     cout << "Presione enter para correr el programa..."<< endl;
-//     cin.ignore();
-//     cin.get();
-//     if (!listaVacia(nuevoNodo)){
-//         listarLista(nuevoNodo);
-//     } else {
-//         cout << "La lista está vacía." << endl;
-//         return 0;
-//     }
-//     // Nodo* auxiliar = nuevoNodo;
-//     // while (auxiliar != nullptr){
-//     //     cout << auxiliar->dato << endl;
-//     //     auxiliar = auxiliar->siguiente;
-//     // };
-//     return 0;
-// }
