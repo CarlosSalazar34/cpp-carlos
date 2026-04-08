@@ -26,6 +26,14 @@ bool listaVacia(Nodo* cabeza){
     return cabeza == nullptr;
 };
 
+void insertarPrimero(Nodo*& cabeza, int valor){
+    Nodo* nuevoNodo = crearNodo(valor);
+    nuevoNodo->siguiente = cabeza;
+    cabeza = nuevoNodo;
+};
+
+
+
 void insertarNodo(Nodo*& cabeza, int valor){
     Nodo* nuevoNodo = crearNodo(valor);
     if (listaVacia(cabeza)){
@@ -55,6 +63,7 @@ int main(){
     {
         cout << "1. Insertar nodo" << endl;
         cout << "2. Listar nodos" << endl;
+        cout << "3. Insertar primero el nodo" << endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opción: ";
         cin >> option;
@@ -72,6 +81,13 @@ int main(){
             } else {
                 cout << "La lista está vacía." << endl;
             }
+        }else if(option == 3){
+            clearTerminal();
+            int valor;
+            cout << "Ingrese el valor del nodo: ";
+            cin >> valor;
+            insertarPrimero(cabeza, valor);
+
         }else if (option == 0){
             clearTerminal();
             cout << "Saliendo del programa..." << endl;
