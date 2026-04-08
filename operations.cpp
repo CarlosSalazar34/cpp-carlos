@@ -23,9 +23,9 @@ void insertarNodo(Nodo*& cabeza, int valor){
         cabeza = nuevoNodo;
     } else {
         Nodo* auxiliar = cabeza;
-        // while (auxiliar->siguiente != nullptr){
-        //     auxiliar = auxiliar->siguiente;
-        // }
+        while (auxiliar->siguiente != nullptr){
+            auxiliar = auxiliar->siguiente;
+        }
         auxiliar->siguiente = nuevoNodo;
     }
 }
