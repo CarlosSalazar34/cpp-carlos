@@ -1,10 +1,19 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 struct Nodo{
     int dato;
     Nodo* siguiente;
 };
+
+void clearTerminal(){
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
 
 Nodo* crearNodo(int valor){
     Nodo* nuevoNodo = new Nodo;
@@ -50,11 +59,13 @@ int main(){
         cout << "Seleccione una opción: ";
         cin >> option;
         if (option == 1){ 
+            clearTerminal();
             int valor;
             cout << "Ingrese el valor del nodo: ";
             cin >> valor;
             insertarNodo(cabeza, valor);
         }else if (option  == 2){ 
+            clearTerminal();
             if (!listaVacia(cabeza)){
                 cout << "Lista enlazada:" << endl;
                 listarLista(cabeza);
@@ -62,6 +73,7 @@ int main(){
                 cout << "La lista está vacía." << endl;
             }
         }else if (option == 0){
+            clearTerminal();
             cout << "Saliendo del programa..." << endl;
             break;
     }else { 
