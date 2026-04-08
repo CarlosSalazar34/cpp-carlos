@@ -15,6 +15,8 @@ void clearScreen(){
     #endif
 }
 
+// PARA MOVER A UNA DIRECCION DE MEMORIA SE UTILIZA EL OPERADOR &
+// PARA ACCEDER AL VALOR DE UNA DIRECCION DE MEMORIA SE UTILIZA EL OPERADOR *   
 void insertar(Nodo*& cabeza, int valor){
     Nodo* nuevoNodo = new Nodo;
     nuevoNodo->valor = valor;
