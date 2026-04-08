@@ -1,12 +1,30 @@
 #include <iostream>
 using namespace std;
 
+struct Nodo {
+    int valor;
+    Nodo *siguiente;
+};
+
+void insertar(Nodo*& cabeza, int valor){
+    Nodo* nuevoNodo = new Nodo;
+    nuevoNodo->valor = valor;
+    nuevoNodo->siguiente = cabeza;
+    cabeza = nuevoNodo;
+};
+
 main(){
-    int a = 10;
-    int *p = &a;
-    cout << "Valor de a: " << a << endl;
-    cout << "Valor de p: " << p << endl;
-    cout << "Valor apuntado por p: " << *p << endl;
-    cout << "Direccion de a: " << &a << endl;
-    cout << "Direccion de p: " << &p << endl;
+    Nodo* cabeza = nullptr;
+
+    insertar(cabeza, 10);
+    insertar(cabeza, 20);
+    insertar(cabeza, 30);
+
+    Nodo* actual = cabeza;
+    while (actual != nullptr) {
+        cout << actual->valor << " ";
+        actual = actual->siguiente;
+    }
+    cout << endl;
+
 }
