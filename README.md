@@ -25,6 +25,63 @@ Este repositorio contiene una colección de ejercicios prácticos en C++ diseña
   - Validación de entrada de usuario
   - Manejo de memoria y estructuras de datos complejas
 
+- **`crud.cpp`**: Sistema básico de CRUD (Crear, Leer, Actualizar, Eliminar) para gestionar usuarios utilizando listas enlazadas. Incluye:
+  - Estructuras de datos personalizadas (`struct Usuario`)
+  - Funciones para crear y listar usuarios
+  - Manejo de punteros y memoria dinámica
+  - Menú interactivo para operaciones básicas
+
+- **`sistema_banco.cpp`**: Sistema de gestión bancaria que permite crear cuentas de usuario. Características:
+  - Creación de cuentas con nombre, número y saldo inicial
+  - Uso de vectores y mapas para almacenar datos
+  - Validación de entrada de usuario
+
+- **`sistema_inventario.cpp`**: Otro sistema de inventario con funcionalidades avanzadas. Incluye:
+  - Actualización de productos (precio y cantidad)
+  - Búsqueda y eliminación de productos
+  - Uso de `std::any` para tipos genéricos
+  - Limpieza de pantalla y manejo de errores
+
+- **`practica_punteros.cpp` y `practica_punteros2.cpp`**: Ejercicios prácticos para el manejo de punteros en C++. Cubren:
+  - Declaración y uso de punteros
+  - Asignación dinámica de memoria (`new` y `delete`)
+  - Punteros a funciones y arreglos
+
+- **`clase2.cpp`, `clase3.cpp`**: Ejercicios de clase que refuerzan conceptos básicos de C++ como variables, bucles y funciones.
+
+- **`ejercicios2.cpp`**: Conjunto adicional de ejercicios prácticos para practicar sintaxis y lógica de programación.
+
+- **`example.cpp`, `example2.cpp`**: Ejemplos básicos de código C++ para ilustrar conceptos fundamentales.
+
+- **`metodos.cpp`**: Demostración de métodos y funciones en C++, incluyendo paso de parámetros y retorno de valores.
+
+- **`operations.cpp`**: Ejercicios enfocados en operaciones matemáticas y lógicas.
+
+- **`practica.cpp`**: Archivo general de prácticas con ejercicios variados.
+
+### Carpeta `practica/`
+
+Esta carpeta contiene ejercicios adicionales organizados en archivos numerados:
+
+- **`practica1.cpp`**: Cálculo de temperaturas promedio y filtrado de valores por encima de la media utilizando vectores.
+- **`practica2.cpp`**: [Descripción pendiente - requiere revisión del código]
+- **`practica3.cpp`**: [Descripción pendiente - requiere revisión del código]
+- **`practica4.cpp`**: [Descripción pendiente - requiere revisión del código]
+
+### Carpeta `sistema-lavanderia/`
+
+Un proyecto completo de gestión de lavandería implementado en C++. Incluye:
+
+- **`main.cpp`**: Archivo principal con la lógica del sistema
+- **`README.md`**: Documentación específica del proyecto de lavandería
+- **`LICENSE`**: Archivo de licencia
+
+Características principales:
+- Registro de pedidos con nombre del cliente, tipo de servicio y peso
+- Listado y búsqueda de pedidos por ID
+- Cálculo de ganancias y estadísticas
+- Tarifas por servicio (lavado básico y lavado + secado)
+
 ## Objetivos Educativos
 
 Estos ejercicios están diseñados para enseñar:
