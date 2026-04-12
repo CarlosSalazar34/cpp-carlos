@@ -1,60 +1,62 @@
 #include <iostream>
-using namespace std;
 
-struct Nodo { 
-    int valor;
+struct Nodo {
+    int dato;
     Nodo* siguiente;
 };
 
-bool listaVacia(Nodo* cabeza) {
-    return cabeza == nullptr;
-}
+// Función para obtener el valor del k-ésimo nodo desde el final
+int obtenerK_EsimoDesdeFinal(Nodo* cabeza, int k) {
+    if (cabeza == nullptr) return -1; // Caso lista vacía
 
-Nodo* crearNodo(int valor) {
-    Nodo* item = new Nodo;
-    item->valor = valor;
-    item->siguiente = nullptr;
-    return item;
-}
+    Nodo* puntero_A = cabeza;
+    Nodo* puntero_B = cabeza;
 
-void insertarValor(Nodo*& cabeza, int valor) { 
-    Nodo* nuevo = crearNodo(valor);
-    if (listaVacia(cabeza)) {
-        cabeza = nuevo;
-    } else { 
-        Nodo* aux = cabeza;
-        // CORRECCIÓN: Nos detenemos en el último nodo real, no en el vacío
-        while (aux->siguiente != nullptr) {
-            aux = aux->siguiente;
+    // 1. Mover puntero_A k posiciones adelante
+    for (int i = 0; i < k; i++) {
+        if (puntero_A == nullptr) {
+            // Error: k es mayor que la longitud de la lista
+            return -1; 
         }
-        // Ahora aux es el último, podemos colgar el nuevo nodo
-        aux->siguiente = nuevo;
+        puntero_A = puntero_A->siguiente;
     }
+
+    // 2. Mover ambos hasta que puntero_A llegue al final
+    while (puntero_A != nullptr) {
+        puntero_A = puntero_A->siguiente;
+        puntero_B = puntero_B->siguiente;
+    }
+
+    // 3. El puntero_B ahora está en la posición k desde el final
+    return puntero_B->dato;
 }
 
-void mostrarLista(Nodo* cabeza) { 
-    if (listaVacia(cabeza)) {
-        cout << "La lista esta vacia" << endl;
-    } else { 
-        Nodo* aux = cabeza;
-        while (aux != nullptr) {
-            cout << "[" << aux->valor << "] -> ";
-            aux = aux->siguiente;
-        }
-        cout << "NULL" << endl;
-    }
+// Función auxiliar para insertar nodos al inicio (para probar)
+void insertarInicio(Nodo*& cabeza, int valor) {
+    Nodo* nuevo = new Nodo();
+    nuevo->dato = valor;
+    nuevo->siguiente = cabeza;
+    cabeza = nuevo;
 }
 
 int main() {
-    // Es vital inicializar en nullptr
     Nodo* miLista = nullptr;
+    
+    // Creamos lista: 50 -> 40 -> 30 -> 20 -> 10
+    insertarInicio(miLista, 10);
+    insertarInicio(miLista, 20);
+    insertarInicio(miLista, 30);
+    insertarInicio(miLista, 40);
+    insertarInicio(miLista, 50);
 
-    insertarValor(miLista, 10);
-    insertarValor(miLista, 20);
-    insertarValor(miLista, 30);
+    int k = 2; // Queremos el 2do desde el final (sería el 20)
+    int resultado = obtenerK_EsimoDesdeFinal(miLista, k);
 
-    cout << "Contenido de la lista:" << endl;
-    mostrarLista(miLista);
+    if (resultado != -1) {
+        std::cout << "El valor en la posicion " << k << " desde el final es: " << resultado << std::endl;
+    } else {
+        std::cout << "Error: Posicion fuera de rango." << std::endl;
+    }
 
     return 0;
 }
