@@ -63,7 +63,8 @@ void iterarLista(Nodo* cabeza){
     cout << "Valores de la lista" << endl;
     while (aux != nullptr)
     {
-        cout << aux->valor;
+        cout << aux->valor << " ";
+        aux = aux->siguiente;
     };
     
 }
@@ -80,18 +81,28 @@ void escanearLista(Nodo* cabeza){
     }
 }
 
-
-void eliminarElementoLista(Nodo*& cabeza, int valor){
+void eliminarElementoDeLista(Nodo*& cabeza, int valor){
+    if (listaVacia(cabeza)) return;
     Nodo* aux = cabeza;
+    Nodo* anterior = nullptr;
     while (aux != nullptr)
     {
         if (aux->valor == valor){
-            cout << "elemento eliminado" << valor << endl;
-            delete aux;
-        } else {
-            cout << "El elemento "<< valor << "no esta en la lista" << endl;
+            if (anterior == nullptr){
+                cabeza = aux->siguiente;
+            } else {
+                anterior->siguiente = aux->siguiente;
+            }
+            
+            Nodo* aBorrar = aux;
+            aux = aux->siguiente;
+            delete aBorrar;
+
+            cout << "Elemento " << aBorrar->valor << "eliminado" << endl;
+        }else {
+            anterior = aux;
+            aux = aux->siguiente;
         }
-        aux = aux->siguiente;
     }
     
 }
@@ -133,13 +144,16 @@ int main(){
     insertarNodo(cabeza2, 43);
     insertarNodo(cabeza2, 50);
     
+    iterarLista(cabeza1);
+    eliminarElementoDeLista(cabeza1, 23);
+    iterarLista(cabeza1);
 
-    cout << "Lista 1" << endl;
-    escanearLista(cabeza1);
-    cout << "Lista 2" << endl;
-    escanearLista(cabeza2);
+    // cout << "Lista 1" << endl;
+    // escanearLista(cabeza1);
+    // cout << "Lista 2" << endl;
+    // escanearLista(cabeza2);
     
-    valoresEnLista1enLista2(cabeza1, cabeza2);
+    // valoresEnLista1enLista2(cabeza1, cabeza2);
 
     return 0;
 
