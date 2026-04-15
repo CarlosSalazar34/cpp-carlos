@@ -57,6 +57,17 @@ void valoresEnLista1enLista2(Nodo* cabeza1, Nodo* cabeza2){
     }
 }
 
+
+void iterarLista(Nodo* cabeza){ 
+    Nodo* aux = cabeza;
+    cout << "Valores de la lista" << endl;
+    while (aux != nullptr)
+    {
+        cout << aux->valor;
+    };
+    
+}
+
 void escanearLista(Nodo* cabeza){ 
     Nodo* aux = cabeza;
     float apariciones;
@@ -65,6 +76,21 @@ void escanearLista(Nodo* cabeza){
         cout << "valor " << aux->valor << endl;
         apariciones = porcentajeApariciones(cabeza, aux->valor);
         cout << "El total de apariciones de el valor " << aux->valor << " es: " << apariciones << "% porciento" << endl;
+        aux = aux->siguiente;
+    }
+}
+
+
+void eliminarElementoLista(Nodo*& cabeza, int valor){
+    Nodo* aux = cabeza;
+    while (aux != nullptr)
+    {
+        if (aux->valor == valor){
+            cout << "elemento eliminado" << valor << endl;
+            delete aux;
+        } else {
+            cout << "El elemento "<< valor << "no esta en la lista" << endl;
+        }
         aux = aux->siguiente;
     }
     
