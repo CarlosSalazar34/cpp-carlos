@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 using namespace std;
 
 struct Nodo{
@@ -130,23 +131,58 @@ void insertarNodo(Nodo*& cabeza, int valor){
     }
 };
 
+void ordenarLista(Nodo* cabeza) { 
+    if (cabeza == nullptr) return;
+
+    Nodo* i = cabeza;
+    while (i->siguiente != nullptr) {
+        Nodo* j = i->siguiente;
+        while (j != nullptr) {
+            if (i->valor > j->valor) {
+                // PISTA FINAL: Aquí haces el intercambio (swap)
+                int aux = i->valor;
+                i->valor = j->valor;
+                j->valor = aux;
+                
+                // Es como cambiar el contenido de dos vasos usando un vaso vacío (temp)
+            }
+            j = j->siguiente;
+        }
+        i = i->siguiente;
+    }
+}
+
 
 int main(){
     Nodo* cabeza1 = nullptr;
     Nodo* cabeza2 = nullptr;
     // INSERTAR VALORES EN LA LISTA 1
-    insertarNodo(cabeza1, 23);
-    insertarNodo(cabeza1, 23);
-    insertarNodo(cabeza1, 50);
+    array<int, 10> numeros = {22 ,34 ,56 ,67, 78, 42, 12, 12 ,33, 3};
+
+    for (int i = 0; i<numeros.size(); i++){
+        insertarNodo(cabeza1, numeros[i]);
+    };
+    
+    iterarLista(cabeza1);
+    cout << "\n";
+    ordenarLista(cabeza1);
+    cout << "\n";
+    iterarLista(cabeza1);
+    
+
+    // insertarNodo(cabeza1, 23);
+    // insertarNodo(cabeza1, 23);
+    // insertarNodo(cabeza1, 50);
     
     // INSERTAR VALORES EN LA LISTA 2
-    insertarNodo(cabeza2, 23);
-    insertarNodo(cabeza2, 43);
-    insertarNodo(cabeza2, 50);
+    // insertarNodo(cabeza2, 23);
+    // insertarNodo(cabeza2, 43);
+    // insertarNodo(cabeza2, 50);
     
-    iterarLista(cabeza1);
-    eliminarElementoDeLista(cabeza1, 23);
-    iterarLista(cabeza1);
+
+    // iterarLista(cabeza1);
+    // eliminarElementoDeLista(cabeza1, 23);
+    // iterarLista(cabeza1);
 
     // cout << "Lista 1" << endl;
     // escanearLista(cabeza1);
