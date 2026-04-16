@@ -131,6 +131,16 @@ void insertarNodo(Nodo*& cabeza, int valor){
     }
 };
 
+void liberarLista(Nodo* cabeza){
+    while (cabeza != nullptr)
+    {
+        Nodo* aux = cabeza;
+        aux = aux->siguiente;
+        delete aux;
+    }
+    
+}
+
 void ordenarLista(Nodo* cabeza) { 
     if (cabeza == nullptr) return;
 
