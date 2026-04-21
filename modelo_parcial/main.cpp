@@ -62,6 +62,20 @@ void insertarValor(Nodo*& cabeza, int valor){
     }   
 }
 
+void verificarAntesInsertar(Nodo* cabeza, int valor){
+    Nodo* aux = cabeza;
+    while(aux != nullptr){
+        if (aux->valor == valor){
+            cout << "El valor "<<valor << " ya existe en la lista" << endl;
+            break;
+        }
+        aux = aux->siguiente;
+    }
+    if (aux == nullptr){
+        insertarValor(cabeza, valor);
+    }
+}
+
 void iterarLista(Nodo* cabeza){
     Nodo* aux = cabeza;
     while (aux != nullptr)
