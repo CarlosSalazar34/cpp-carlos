@@ -76,10 +76,11 @@ int main(){
     Nodo* cabeza = nullptr;
     insertarValor(cabeza, 23);
     insertarValor(cabeza, 2);
+    insertarValor(cabeza, 25);
     insertarInicio(cabeza, 50); 
     insertarValor(cabeza, 100);
     iterarLista(cabeza);
-    eliminarValor(cabeza, 23);
+    eliminarValor(cabeza, 50);
     iterarLista(cabeza);
     return 0;
 }
