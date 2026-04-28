@@ -28,6 +28,29 @@ void insertarInicio(Nodo*& cabeza, int valor) {
     cabeza = nuevo;
 }
 
+void imprimirListaDos(Nodo* cabeza){
+    Nodo* aux = cabeza;
+    Nodo* ultimo = nullptr;
+
+    while (aux != nullptr)
+    {
+        cout << aux->dato << " ";
+        if (aux->siguiente == nullptr){
+            ultimo = aux;
+        }
+        aux = aux->siguiente;
+    }
+    cout << endl;
+    
+    aux = ultimo; // Empezamos desde el final
+    while (aux != nullptr)
+    {
+        cout << aux->dato << " ";
+        aux = aux->anterior;
+    }
+    
+}
+
 void insertarUltimo(Nodo*& cabeza, int valor) {
     Nodo* nuevo = crearNodo(valor);
     if (listaVacia(cabeza)) {
@@ -78,7 +101,8 @@ int main() {
     insertarUltimo(cabeza, 20);
     insertarInicio(cabeza, 5);
     
-    imprimirLista(cabeza);
+    // imprimirLista(cabeza);
+    imprimirListaDos(cabeza);
     
     return 0;
 }
