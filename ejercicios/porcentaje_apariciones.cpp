@@ -135,7 +135,8 @@ void liberarLista(Nodo* cabeza){
     while (cabeza != nullptr)
     {
         Nodo* aux = cabeza;
-        aux = aux->siguiente;
+        aux = aux
+        ->siguiente;
         delete aux;
     }
     

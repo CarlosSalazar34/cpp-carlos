@@ -17,34 +17,11 @@ bool listaVacia(Nodo* cabeza){
     return cabeza == nullptr;
 }
 
-void ordenarAscendente(Nodo*& cabeza){
-    Nodo* aux = cabeza;
-    while(aux != nullptr){
-        if (aux->valor > aux->siguiente->valor){
-            int temp = aux->valor;
-            aux->valor = aux->siguiente->valor;
-            aux->siguiente->valor = temp;
-        }
-        aux = aux->siguiente;
-    }
-}
-
-void ordenarDescendente(Nodo*& cabeza){
-    Nodo* aux = cabeza;
-    while(aux != nullptr){
-        if (aux->valor < aux->siguiente->valor){
-            int temp = aux->valor;
-            aux->valor = aux->siguiente->valor;
-            aux->siguiente->valor = temp;
-        }
-        aux = aux->siguiente;
-    }
-}   
-
-void insertarInicio(Nodo*& cabeza, int valor){
+void insertarInicio(Nodo*& cabeza, int valor) {
     Nodo* nuevo = crearNodo(valor);
-    nuevo->siguiente = cabeza;
-    cabeza = nuevo;
+    nuevo->siguiente = cabeza; 
+    
+    cabeza = nuevo; 
 }
 
 void insertarValor(Nodo*& cabeza, int valor){
@@ -62,20 +39,6 @@ void insertarValor(Nodo*& cabeza, int valor){
     }   
 }
 
-void verificarAntesInsertar(Nodo* cabeza, int valor){
-    Nodo* aux = cabeza;
-    while(aux != nullptr){
-        if (aux->valor == valor){
-            cout << "El valor "<<valor << " ya existe en la lista" << endl;
-            break;
-        }
-        aux = aux->siguiente;
-    }
-    if (aux == nullptr){
-        insertarValor(cabeza, valor);
-    }
-}
-
 void iterarLista(Nodo* cabeza){
     Nodo* aux = cabeza;
     while (aux != nullptr)
@@ -89,14 +52,7 @@ void iterarLista(Nodo* cabeza){
 int main(){
     Nodo* cabeza = nullptr;
     insertarValor(cabeza,23);
-    insertarValor(cabeza, 2);
-    insertarValor(cabeza, 45);
-    insertarValor(cabeza, 15);
-    insertarValor(cabeza, 909);
-    iterarLista(cabeza);
-    ordenarAscendente(cabeza);
-    iterarLista(cabeza);
-    ordenarDescendente(cabeza);
+    insertarValor(cabeza, 23);
     iterarLista(cabeza);
     return 0;
 }
