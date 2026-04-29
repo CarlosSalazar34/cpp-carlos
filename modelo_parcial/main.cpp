@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
 struct Nodo {
@@ -51,6 +52,9 @@ void iterarLista(Nodo* cabeza){
 
 int main(){
     Nodo* cabeza = nullptr;
+    stack<string> pilaUno;
+    pilaUno.push("hola");
+    pilaUno.push("34");
     insertarValor(cabeza,23);
     insertarValor(cabeza, 23);
     iterarLista(cabeza);
