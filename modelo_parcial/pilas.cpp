@@ -83,7 +83,7 @@ void llenarPila(Pila *&pila)
     }
 }
 
-main()
+int main()
 {
 
     Pila *pila = NULL;
@@ -99,4 +99,5 @@ main()
     Apilar(pila, 555);
     cout << "Contenido de la Pila luego de apilar un elemento: " << endl;
     mostrarPila(pila);
+    return 0;
 }
